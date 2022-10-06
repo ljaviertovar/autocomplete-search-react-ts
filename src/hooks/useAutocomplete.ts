@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { SetStateAction, useEffect, useState } from "react"
 
 import { Country } from "../ts/interfaces/Country.interface"
 
@@ -14,10 +14,10 @@ const useAutocomplete = (data: Country[], inputSearchRef: HTMLInputElement | nul
 		}
 	}, [])
 
-	const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
+	const handleChange = (event: { target: { value: SetStateAction<string> } }): void => {
 		if (event.target.value !== "") {
 			const filteredSuggestions = data.filter(itemData => {
-				const value = event.target.value.toUpperCase()
+				const value = event.target.value.toString().toUpperCase()
 				const name = itemData.name.common.toUpperCase()
 
 				return value && name.startsWith(value) && name !== value
