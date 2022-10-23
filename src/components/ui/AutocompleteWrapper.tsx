@@ -6,6 +6,8 @@ import { Autocomplete } from "."
 
 import { Country } from "../../ts/interfaces/Country.interface"
 
+import classes from "./ui.module.css"
+
 const AutocompleteWrapper = () => {
 	const [data, setData] = useState<Country[]>([])
 
@@ -29,13 +31,7 @@ const AutocompleteWrapper = () => {
 				</Col>
 			</Row>
 			<Row>
-				<Col
-					style={{
-						width: "60%",
-						margin: "auto",
-						padding: "1rem",
-					}}
-				>
+				<Col className={classes.autocompleteContainer}>
 					<Autocomplete data={data} />
 				</Col>
 			</Row>
